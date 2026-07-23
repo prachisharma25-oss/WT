@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Bill Generator</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            /* FIXED: Changed height to min-height to support scrolling when mobile keyboards open */
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#74ebd5,#9face6);
+            /* Added padding so the container never touches the raw screen edges */
+            padding: 20px;
+        }
+
+        .container{
+            /* FIXED: Changed width to max-width and added width 100% for fluidity */
+            width: 100%;
+            max-width:380px;
+            background:#fff;
+            padding:35px;
+            border-radius:15px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#333;
+            margin-bottom:25px;
+            font-size: 24px;
+        }
+
+        label{
+            display:block;
+            margin-bottom:8px;
+            font-weight:bold;
+            color:#444;
+        }
+
+        input[type="text"],
+        input[type="number"]{
+            width:100%;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            margin-bottom:20px;
+            font-size:16px;
+            transition:0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus{
+            border-color:#4CAF50;
+            outline:none;
+            box-shadow:0 0 8px rgba(76,175,80,0.4);
+        }
+
+        input[type="submit"]{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:#4CAF50;
+            color:white;
+            font-size:17px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        input[type="submit"]:hover{
+            background:#388E3C;
+            transform:scale(1.03);
+        }
+
+        .icon{
+            font-size:45px;
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        /* NEW: Added media query for small screen environments (like mobile phones) */
+        @media (max-width: 400px) {
+            .container {
+                padding: 25px 20px; /* Slightly reduced padding to maximize input real estate */
+            }
+            h2 {
+                font-size: 21px; /* Scaled down header sizes for tight screen widths */
+            }
+            input[type="text"],
+            input[type="number"],
+            input[type="submit"] {
+                font-size: 15px; /* Better input font fitting on portable browsers */
+                padding: 10px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="icon">⚡</div>
+
+    <h2>Electricity Bill Generator</h2>
+
+    <form action="bill.php" method="post">
+
+        <label>Customer Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+        
+        <label>Month</label>
+        <input type="text" name="month" placeholder="Enter Month" required>
+
+        <label>Units Consumed</label>
+        <input type="number" name="units" placeholder="Enter units" required>
+
+        <input type="submit" value="Generate Bill">
+
+    </form>
+
+</div>
+
+</body>
+</html>
