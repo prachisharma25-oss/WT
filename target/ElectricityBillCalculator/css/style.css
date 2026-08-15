@@ -1,0 +1,269 @@
+/* ==========================================================================
+   style.css  –  ElectroBill: Electricity Bill Calculator
+   Custom styles layered on top of Bootstrap 5
+   ========================================================================== */
+
+/* ── Google Font ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ── CSS Custom Properties ───────────────────────────────────────────────── */
+:root {
+    --eb-primary:     #0d6efd;
+    --eb-primary-dk:  #0a58ca;
+    --eb-gradient:    linear-gradient(135deg, #0d6efd 0%, #0a58ca 50%, #6610f2 100%);
+    --eb-card-radius: 1rem;
+    --eb-transition:  0.25s ease;
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f6fc;
+    color: #212529;
+}
+
+/* ── Navbar ──────────────────────────────────────────────────────────────── */
+.navbar {
+    backdrop-filter: blur(8px);
+}
+
+.navbar-brand {
+    font-size: 1.35rem;
+    letter-spacing: -0.3px;
+}
+
+/* ── Hero Banner ─────────────────────────────────────────────────────────── */
+.hero-banner {
+    background: var(--eb-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.04' d='M0,96L60,112C120,128,240,160,360,160C480,160,600,128,720,122.7C840,117,960,139,1080,149.3C1200,160,1320,160,1380,160L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────── */
+.card {
+    border-radius: var(--eb-card-radius) !important;
+    transition: box-shadow var(--eb-transition);
+}
+
+.card:hover {
+    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.card-header {
+    border-bottom: none;
+}
+
+/* ── Form Styling ────────────────────────────────────────────────────────── */
+.form-control,
+.form-select {
+    border-radius: 0.5rem;
+    border: 1.5px solid #dee2e6;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.9rem;
+    transition: border-color var(--eb-transition), box-shadow var(--eb-transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--eb-primary);
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.input-group-text {
+    background-color: #f0f4ff;
+    border: 1.5px solid #dee2e6;
+    color: var(--eb-primary);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.btn {
+    border-radius: 0.6rem;
+    font-weight: 500;
+    transition: all var(--eb-transition);
+}
+
+.btn-primary {
+    background: var(--eb-gradient);
+    border: none;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(13, 110, 253, 0.4);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-1px);
+}
+
+/* ── Consumer Detail Row ─────────────────────────────────────────────────── */
+.detail-row {
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 0.65rem 1rem;
+    border-left: 3px solid var(--eb-primary);
+    height: 100%;
+}
+
+/* ── Meter Reading Boxes ─────────────────────────────────────────────────── */
+.reading-box {
+    transition: transform var(--eb-transition);
+}
+
+.reading-box:hover {
+    transform: scale(1.03);
+}
+
+/* ── Bill Summary Box ────────────────────────────────────────────────────── */
+.summary-box {
+    background: linear-gradient(to bottom right, #f0f4ff, #e8f0fe);
+    border: 1px solid #c5d5f9;
+}
+
+/* ── Bill Icon Circle ────────────────────────────────────────────────────── */
+.bill-icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── Amount Highlight Card ───────────────────────────────────────────────── */
+.amount-highlight-card {
+    background: linear-gradient(135deg, #e8f0fe, #f0f4ff);
+    border: 2px solid #c5d5f9 !important;
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.table th {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table td {
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+/* ── Progress Bars ───────────────────────────────────────────────────────── */
+.progress {
+    border-radius: 50px;
+    background-color: #e9ecef;
+}
+
+/* ── Loading Spinner on Submit ───────────────────────────────────────────── */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.btn-loading .spinner-border {
+    width: 1rem;
+    height: 1rem;
+    border-width: 2px;
+}
+
+/* ── Units Preview Alert ─────────────────────────────────────────────────── */
+#unitsPreview {
+    border-left: 4px solid var(--eb-primary);
+    animation: fadeInDown 0.3s ease;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes countUp {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.card {
+    animation: fadeInDown 0.4s ease both;
+}
+
+/* ── Print Styles ────────────────────────────────────────────────────────── */
+@media print {
+    .navbar,
+    .hero-banner,
+    footer,
+    .card-footer,
+    .col-lg-4,
+    #printBtn,
+    #downloadBtn {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+    }
+
+    main {
+        padding: 0 !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .col-lg-8 {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* ── Responsive Tweaks ───────────────────────────────────────────────────── */
+@media (max-width: 576px) {
+    .hero-banner h1 {
+        font-size: 1.6rem;
+    }
+
+    .reading-box h5 {
+        font-size: 1rem;
+    }
+
+    .summary-box .fs-4 {
+        font-size: 1.3rem !important;
+    }
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0d6efd;
+    border-radius: 3px;
+}
