@@ -1,0 +1,163 @@
+/* Theme Palette Definitions */
+:root {
+  /* Default: Cyber Neon Theme */
+  --bg-dark: #080b14;
+  --bg-gradient: radial-gradient(circle at 50% 20%, #151a30 0%, #080b14 100%);
+  --panel-bg: rgba(20, 26, 45, 0.65);
+  --panel-border: rgba(0, 240, 255, 0.18);
+  --panel-blur: 16px;
+  
+  --accent-cyan: #00f0ff;
+  --accent-pink: #ff007f;
+  --accent-purple: #9d00ff;
+  --accent-amber: #ffaa00;
+  --accent-green: #00ff88;
+  
+  --text-main: #f0f4f8;
+  --text-muted: #8a99ad;
+  --text-dim: #4e5d78;
+  
+  --glow-color: rgba(0, 240, 255, 0.35);
+  --glow-intensity: 1;
+  --clock-face-bg: rgba(12, 16, 29, 0.85);
+  --clock-hand-hour: #00f0ff;
+  --clock-hand-min: #ffffff;
+  --clock-hand-sec: #ff007f;
+  
+  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.1);
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Outfit', 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+}
+
+/* Theme 1: Obsidian Dark */
+[data-theme="obsidian"] {
+  --bg-dark: #090a0f;
+  --bg-gradient: radial-gradient(ellipse at top, #161a24 0%, #090a0f 100%);
+  --panel-bg: rgba(18, 22, 32, 0.7);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --accent-cyan: #6366f1;
+  --accent-pink: #ec4899;
+  --accent-purple: #8b5cf6;
+  --accent-amber: #f59e0b;
+  --accent-green: #10b981;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-dim: #4b5563;
+  --glow-color: rgba(99, 102, 241, 0.25);
+  --clock-face-bg: rgba(15, 18, 28, 0.9);
+  --clock-hand-hour: #ffffff;
+  --clock-hand-min: #cbd5e1;
+  --clock-hand-sec: #6366f1;
+  --card-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  --font-display: 'Inter', sans-serif;
+}
+
+/* Theme 2: Cyber Neon (Default override) */
+[data-theme="cyber"] {
+  --bg-dark: #05070e;
+  --bg-gradient: radial-gradient(circle at 50% 30%, #12182b 0%, #05070e 100%);
+  --panel-bg: rgba(13, 19, 36, 0.7);
+  --panel-border: rgba(0, 240, 255, 0.25);
+  --accent-cyan: #00f0ff;
+  --accent-pink: #ff0055;
+  --accent-purple: #a800ff;
+  --accent-amber: #ffbe0b;
+  --accent-green: #00ffaa;
+  --glow-color: rgba(0, 240, 255, 0.4);
+  --clock-hand-hour: #00f0ff;
+  --clock-hand-min: #ffffff;
+  --clock-hand-sec: #ff0055;
+  --font-display: 'Orbitron', sans-serif;
+}
+
+/* Theme 3: Glass Aurora */
+[data-theme="aurora"] {
+  --bg-dark: #0a111a;
+  --bg-gradient: radial-gradient(circle at 10% 20%, #1e3a40 0%, #0e1e2d 50%, #070c14 100%);
+  --panel-bg: rgba(255, 255, 255, 0.07);
+  --panel-border: rgba(255, 255, 255, 0.18);
+  --panel-blur: 24px;
+  --accent-cyan: #2dd4bf;
+  --accent-pink: #f43f5e;
+  --accent-purple: #c084fc;
+  --accent-amber: #fbbf24;
+  --accent-green: #34d399;
+  --text-main: #f0fdfa;
+  --text-muted: #99f6e4;
+  --text-dim: #4d7c0f;
+  --glow-color: rgba(45, 212, 191, 0.3);
+  --clock-face-bg: rgba(15, 28, 38, 0.75);
+  --clock-hand-hour: #2dd4bf;
+  --clock-hand-min: #f0fdfa;
+  --clock-hand-sec: #f43f5e;
+  --font-display: 'Outfit', sans-serif;
+}
+
+/* Theme 4: Solar Flare Gold */
+[data-theme="solar"] {
+  --bg-dark: #120d08;
+  --bg-gradient: radial-gradient(circle at 50% 10%, #2a1b0a 0%, #120d08 100%);
+  --panel-bg: rgba(35, 23, 12, 0.65);
+  --panel-border: rgba(255, 170, 0, 0.25);
+  --accent-cyan: #ffaa00;
+  --accent-pink: #ff4500;
+  --accent-purple: #e63946;
+  --accent-amber: #ffd700;
+  --accent-green: #52b788;
+  --text-main: #fff8e7;
+  --text-muted: #d4a373;
+  --text-dim: #7f5539;
+  --glow-color: rgba(255, 170, 0, 0.35);
+  --clock-face-bg: rgba(25, 16, 8, 0.85);
+  --clock-hand-hour: #ffd700;
+  --clock-hand-min: #fff8e7;
+  --clock-hand-sec: #ff4500;
+  --font-display: 'Cinzel', serif;
+}
+
+/* Theme 5: OLED Deep Black */
+[data-theme="oled"] {
+  --bg-dark: #000000;
+  --bg-gradient: #000000;
+  --panel-bg: rgba(18, 18, 18, 0.9);
+  --panel-border: rgba(40, 40, 40, 0.8);
+  --accent-cyan: #38bdf8;
+  --accent-pink: #fb7185;
+  --accent-purple: #a78bfa;
+  --accent-amber: #fbbf24;
+  --accent-green: #4ade80;
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-dim: #52525b;
+  --glow-color: rgba(56, 189, 248, 0.15);
+  --clock-face-bg: #0a0a0a;
+  --clock-hand-hour: #ffffff;
+  --clock-hand-min: #a1a1aa;
+  --clock-hand-sec: #38bdf8;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+  --font-display: 'Share Tech Mono', monospace;
+}
+
+/* Theme 6: Pearl Light */
+[data-theme="light"] {
+  --bg-dark: #f1f5f9;
+  --bg-gradient: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 100%);
+  --panel-bg: rgba(255, 255, 255, 0.75);
+  --panel-border: rgba(203, 213, 225, 0.8);
+  --accent-cyan: #0284c7;
+  --accent-pink: #db2777;
+  --accent-purple: #7c3aed;
+  --accent-amber: #d97706;
+  --accent-green: #059669;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --glow-color: rgba(2, 132, 199, 0.2);
+  --clock-face-bg: #ffffff;
+  --clock-hand-hour: #0f172a;
+  --clock-hand-min: #334155;
+  --clock-hand-sec: #db2777;
+  --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
+  --font-display: 'Outfit', sans-serif;
+}
