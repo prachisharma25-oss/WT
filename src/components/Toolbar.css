@@ -1,0 +1,83 @@
+.toolbar {
+  width: 160px;
+  flex-shrink: 0;
+  background: #12122a;
+  border-right: 1px solid #2a2a4a;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 8px;
+  overflow-y: auto;
+}
+
+.toolbar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toolbar-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #555;
+  letter-spacing: 1px;
+  padding: 4px 4px 2px;
+}
+
+.tb-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: #1e1e3a;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+  text-align: left;
+}
+.tb-btn:hover {
+  background: #2a2a4e;
+  border-color: #4a4a8a;
+  color: #fff;
+}
+
+.tb-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.class-btn .tb-icon { background: #2a4a7a; color: #7ab3ff; }
+.abstract-btn .tb-icon { background: #4a2a7a; color: #c07aff; }
+.interface-btn .tb-icon { background: #2a6a5a; color: #7affd4; }
+.italic { font-style: italic; }
+
+.toolbar-divider {
+  height: 1px;
+  background: #2a2a4a;
+  margin: 6px 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 4px;
+  font-size: 11px;
+  color: #888;
+}
+
+.help-text {
+  font-size: 11px;
+  color: #555;
+  padding: 2px 4px;
+}

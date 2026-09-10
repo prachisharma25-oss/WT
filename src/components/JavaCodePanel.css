@@ -1,0 +1,149 @@
+.code-panel {
+  width: 420px;
+  flex-shrink: 0;
+  background: #0d0d1a;
+  border-left: 1px solid #2a2a4a;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.code-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #1a1a2e;
+  border-bottom: 1px solid #2a2a4a;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.code-panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f7c94a;
+  white-space: nowrap;
+}
+
+.code-panel-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: 1px solid #3a3a6a;
+  background: #1e1e3a;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 11px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.action-btn:hover { background: #2a2a4e; color: #fff; }
+.action-btn.download { border-color: #4a6a4a; color: #88cc88; }
+.action-btn.download:hover { background: #2a3e2a; }
+
+.close-btn {
+  background: none;
+  border: 1px solid #333;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  font-size: 12px;
+}
+.close-btn:hover { background: #2a2a4a; color: #fff; }
+
+.code-panel-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.file-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  border-bottom: 1px solid #2a2a4a;
+  background: #13132a;
+  flex-shrink: 0;
+}
+
+.file-tab {
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #555;
+  cursor: pointer;
+  font-size: 11px;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.file-tab:hover { color: #aaa; }
+.file-tab.active {
+  color: #f7c94a;
+  border-bottom-color: #f7c94a;
+}
+
+.code-area-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.code-area-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: #111120;
+  border-bottom: 1px solid #1e1e3a;
+  flex-shrink: 0;
+}
+
+.file-badge {
+  font-size: 11px;
+  color: #555;
+  font-family: monospace;
+  flex: 1;
+}
+
+.sm-btn {
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 1px solid #2a2a4a;
+  background: #1a1a2e;
+  color: #888;
+  cursor: pointer;
+  font-size: 11px;
+}
+.sm-btn:hover { color: #fff; background: #2a2a4e; }
+
+.code-area {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  margin: 0;
+  font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #c0d0e0;
+  background: #0d0d1a;
+  white-space: pre;
+  tab-size: 4;
+}
+
+/* Syntax-like coloring via CSS counter trick — handled in generator */
+.code-area code {
+  color: inherit;
+}

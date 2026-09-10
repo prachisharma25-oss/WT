@@ -1,0 +1,8 @@
+.canvas-svg {
+  display: block;
+  background: #0f0f23;
+}
+
+.cursor-grab { cursor: grab; }
+.cursor-grabbing { cursor: grabbing; }
+.cursor-crosshair { cursor: crosshair; }
