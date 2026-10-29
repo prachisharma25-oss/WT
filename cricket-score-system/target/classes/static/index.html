@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Score Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏏</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🏏</span>
+                <div>
+                    <h1>CricketLive</h1>
+                    <span class="tagline">Real-time Score Management</span>
+                </div>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" onclick="showSection('live')">Live</button>
+                <button class="nav-btn" onclick="showSection('matches')">Matches</button>
+                <button class="nav-btn" onclick="showSection('teams')">Teams</button>
+                <button class="nav-btn" onclick="showSection('players')">Players</button>
+                <button class="nav-btn" onclick="showSection('admin')">Admin</button>
+            </nav>
+            <div class="ws-status" id="wsStatus">
+                <span class="status-dot"></span>
+                <span id="wsStatusText">Connecting...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- LIVE SECTION -->
+        <section id="section-live" class="section active">
+            <div class="section-header">
+                <h2>🔴 Live Matches</h2>
+                <div class="live-badge">LIVE</div>
+            </div>
+            <div id="liveMatchesGrid" class="matches-grid">
+                <div class="loading-card">Loading live matches...</div>
+            </div>
+
+            <!-- Selected Live Match Detail -->
+            <div id="liveMatchDetail" class="live-detail hidden">
+                <div class="detail-header">
+                    <button class="back-btn" onclick="hideLiveDetail()">← Back</button>
+                    <h3 id="detailMatchTitle"></h3>
+                    <div class="live-indicator"><span class="pulse"></span> LIVE</div>
+                </div>
+
+                <div class="score-hero">
+                    <div class="batting-team" id="battingTeamDisplay"></div>
+                    <div class="main-score" id="mainScoreDisplay">0/0</div>
+                    <div class="overs-display" id="oversDisplay">(0.0 ov)</div>
+                    <div class="crr-display" id="crrDisplay">CRR: 0.00</div>
+                </div>
+
+                <!-- 2nd innings target info -->
+                <div id="targetInfo" class="target-info hidden">
+                    <span id="targetDisplay"></span>
+                    <span id="rrrDisplay"></span>
+                </div>
+
+                <!-- Previous innings -->
+                <div id="prevInningsBar" class="prev-innings hidden">
+                    <span id="prevInningsDisplay"></span>
+                </div>
+
+                <div class="scorecard-grid">
+                    <!-- Batsmen -->
+                    <div class="scorecard-panel">
+                        <h4>🏏 Batting</h4>
+                        <table class="score-table">
+                            <thead><tr><th>Batsman</th><th>R</th><th>B</th><th>SR</th></tr></thead>
+                            <tbody id="battingRows"></tbody>
+                        </table>
+                    </div>
+                    <!-- Bowler -->
+                    <div class="scorecard-panel">
+                        <h4>⚡ Bowling</h4>
+                        <table class="score-table">
+                            <thead><tr><th>Bowler</th><th>O</th><th>R</th><th>W</th><th>ER</th></tr></thead>
+                            <tbody id="bowlerRow"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent balls -->
+                <div class="recent-section">
+                    <div class="recent-label">This Over</div>
+                    <div id="recentBalls" class="balls-container"></div>
+                </div>
+
+                <!-- Last wicket -->
+                <div id="lastWicketBar" class="last-wicket hidden">
+                    <span>🏆 Last Wicket: <span id="lastWicketText"></span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATCHES SECTION -->
+        <section id="section-matches" class="section hidden">
+            <div class="section-header">
+                <h2>📅 All Matches</h2>
+                <div class="filter-tabs">
+                    <button class="filter-btn active" onclick="filterMatches('ALL')">All</button>
+                    <button class="filter-btn" onclick="filterMatches('LIVE')">Live</button>
+                    <button class="filter-btn" onclick="filterMatches('UPCOMING')">Upcoming</button>
+                    <button class="filter-btn" onclick="filterMatches('COMPLETED')">Completed</button>
+                </div>
+            </div>
+            <div id="allMatchesGrid" class="matches-grid"></div>
+        </section>
+
+        <!-- TEAMS SECTION -->
+        <section id="section-teams" class="section hidden">
+            <div class="section-header">
+                <h2>🏟️ Teams</h2>
+            </div>
+            <div id="teamsGrid" class="teams-grid"></div>
+            <div id="teamDetail" class="team-detail hidden">
+                <button class="back-btn" onclick="hideTeamDetail()">← Back to Teams</button>
+                <h3 id="teamDetailName"></h3>
+                <div id="teamPlayersList" class="players-list"></div>
+            </div>
+        </section>
+
+        <!-- PLAYERS SECTION -->
+        <section id="section-players" class="section hidden">
+            <div class="section-header">
+                <h2>👤 Players</h2>
+                <div class="filter-tabs">
+                    <button class="filter-btn active" onclick="filterPlayers('ALL')">All</button>
+                    <button class="filter-btn" onclick="filterPlayers('BATSMAN')">Batsmen</button>
+                    <button class="filter-btn" onclick="filterPlayers('BOWLER')">Bowlers</button>
+                    <button class="filter-btn" onclick="filterPlayers('ALL_ROUNDER')">All-Rounders</button>
+                    <button class="filter-btn" onclick="filterPlayers('WICKET_KEEPER')">WK</button>
+                </div>
+            </div>
+            <div id="playersTable" class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Player</th><th>Role</th><th>Team</th>
+                            <th>Matches</th><th>Runs</th><th>Wickets</th><th>Avg</th>
+                        </tr>
+                    </thead>
+                    <tbody id="playersBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ADMIN SECTION -->
+        <section id="section-admin" class="section hidden">
+            <div class="section-header">
+                <h2>⚙️ Admin Panel</h2>
+            </div>
+            <div class="admin-grid">
+                <div class="admin-card">
+                    <h4>Create New Match</h4>
+                    <form id="createMatchForm" onsubmit="createMatch(event)">
+                        <div class="form-group">
+                            <label>Match Title</label>
+                            <input type="text" id="matchTitle" placeholder="e.g. IND vs AUS - 1st T20I" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Team 1</label>
+                                <select id="team1Select" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Team 2</label>
+                                <select id="team2Select" required></select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Format</label>
+                                <select id="matchFormat">
+                                    <option value="T20">T20</option>
+                                    <option value="ODI">ODI</option>
+                                    <option value="TEST">TEST</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Toss Decision</label>
+                                <select id="tossDecision">
+                                    <option value="bat">Bat</option>
+                                    <option value="field">Field</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Venue</label>
+                            <input type="text" id="matchVenue" placeholder="e.g. Wankhede Stadium, Mumbai" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Create Match</button>
+                    </form>
+                </div>
+
+                <div class="admin-card">
+                    <h4>Match Controls</h4>
+                    <div class="form-group">
+                        <label>Select Match</label>
+                        <select id="adminMatchSelect" onchange="loadMatchControls()"></select>
+                    </div>
+                    <div id="matchControls" class="match-controls">
+                        <button class="btn-green" onclick="startSelectedMatch()">▶ Start Match</button>
+                        <button class="btn-red" onclick="completeSelectedMatch()">⏹ Complete Match</button>
+                    </div>
+                    <div id="adminMessage" class="admin-msg"></div>
+                </div>
+
+                <div class="admin-card">
+                    <h4>API Reference</h4>
+                    <div class="api-list">
+                        <div class="api-item"><span class="method get">GET</span> <code>/api/matches</code></div>
+                        <div class="api-item"><span class="method get">GET</span> <code>/api/matches/live</code></div>
+                        <div class="api-item"><span class="method get">GET</span> <code>/api/matches/{id}</code></div>
+                        <div class="api-item"><span class="method post">POST</span> <code>/api/matches</code></div>
+                        <div class="api-item"><span class="method post">POST</span> <code>/api/matches/{id}/start</code></div>
+                        <div class="api-item"><span class="method get">GET</span> <code>/api/live</code></div>
+                        <div class="api-item"><span class="method get">GET</span> <code>/api/live/{matchId}</code></div>
+                        <div class="api-item"><span class="method get">GET</span> <code>/api/teams</code></div>
+                        <div class="api-item"><span class="method get">GET</span> <code>/api/players</code></div>
+                        <div class="api-item"><span class="method ws">WS</span> <code>/ws → /topic/scores/{id}</code></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>🏏 Cricket Score Management System &nbsp;|&nbsp; Real-time via WebSocket &nbsp;|&nbsp;
+           <a href="/h2-console" target="_blank">H2 Console</a> &nbsp;|&nbsp;
+           Built with Spring Boot 3</p>
+    </footer>
+
+    <!-- SockJS + STOMP for WebSocket -->
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
